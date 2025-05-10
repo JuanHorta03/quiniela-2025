@@ -7,7 +7,7 @@
 <body>
   <h2>Quiniela - Cuartos de Final</h2>
   <form id="quinielaForm">
-    <label>Nombre:<br><input type="text" id="nombre" required></label><br><br>
+    <label>Nombre:<br><input type="text" name="nombre" id="nombre" required></label><br><br>
 
     <label>Toluca vs Monterrey:
       <select name="partido1">
@@ -55,7 +55,7 @@
   </form>
 
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbX.../exec'; // Reemplaza con tu URL real
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzlFp7YnlK9jDd5N-u6HdqY1Z3ksPepLhv6tJICzPjJ7G20kJVBRlm0_21ppsRh3RiNqQ/exec';
 
     document.getElementById('quinielaForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -77,7 +77,12 @@
       document.getElementById('whatsAppLink').click();
 
       // Guardar en Google Sheets
-      fetch(scriptURL, { method: 'POST', body: new FormData(document.getElementById('quinielaForm')) });
+      fetch(scriptURL, {
+        method: 'POST',
+        body: form
+      })
+      .then(response => console.log('Enviado a Google Sheets'))
+      .catch(error => console.error('Error al enviar a Google Sheets', error));
     });
   </script>
 </body>
