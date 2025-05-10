@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiniela 2025</title>
+</head>
+<body>
+  <h2>Quiniela - Cuartos de Final</h2>
+  <form id="quinielaForm">
+    <label>Nombre:<br><input type="text" id="nombre" required></label><br><br>
+
+    <label>Toluca vs Monterrey:
+      <select name="partido1">
+        <option value="Toluca">Toluca</option>
+        <option value="Empate">Empate</option>
+        <option value="Monterrey">Monterrey</option>
+      </select>
+    </label><br>
+
+    <label>América vs Pachuca:
+      <select name="partido2">
+        <option value="América">América</option>
+        <option value="Empate">Empate</option>
+        <option value="Pachuca">Pachuca</option>
+      </select>
+    </label><br>
+
+    <label>Barcelona vs Real Madrid:
+      <select name="partido3">
+        <option value="Barcelona">Barcelona</option>
+        <option value="Empate">Empate</option>
+        <option value="Real Madrid">Real Madrid</option>
+      </select>
+    </label><br>
+
+    <label>Liverpool vs Arsenal:
+      <select name="partido4">
+        <option value="Liverpool">Liverpool</option>
+        <option value="Empate">Empate</option>
+        <option value="Arsenal">Arsenal</option>
+      </select>
+    </label><br>
+
+    <label>Napoli vs Genoa:
+      <select name="partido5">
+        <option value="Napoli">Napoli</option>
+        <option value="Empate">Empate</option>
+        <option value="Genoa">Genoa</option>
+      </select>
+    </label><br><br>
+
+    <a id="whatsAppLink" href="#" target="_blank">
+      <button type="submit">Enviar por WhatsApp</button>
+    </a>
+  </form>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbX.../exec'; // Reemplaza con tu URL real
+
+    document.getElementById('quinielaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const form = new FormData(this);
+
+      const mensaje = `*Quiniela de ${nombre}*\n` +
+        `1. Toluca vs Monterrey: ${form.get('partido1')}\n` +
+        `2. América vs Pachuca: ${form.get('partido2')}\n` +
+        `3. Barcelona vs Real Madrid: ${form.get('partido3')}\n` +
+        `4. Liverpool vs Arsenal: ${form.get('partido4')}\n` +
+        `5. Napoli vs Genoa: ${form.get('partido5')}`;
+
+      // Enviar por WhatsApp
+      const telefono = '524775670219';
+      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+      document.getElementById('whatsAppLink').href = url;
+      document.getElementById('whatsAppLink').click();
+
+      // Guardar en Google Sheets
+      fetch(scriptURL, { method: 'POST', body: new FormData(document.getElementById('quinielaForm')) });
+    });
+  </script>
+</body>
+</html>
