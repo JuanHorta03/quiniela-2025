@@ -106,6 +106,18 @@
         button[type="submit"]:hover {
             background-color: #1e7e34;
         }
+
+        .form-nombre {
+            margin-bottom: 1rem;
+        }
+
+        .form-nombre input {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -113,223 +125,99 @@
 <div class="container">
     <h2>Quiniela</h2>
     <form id="quinielaForm">
-        <label for="nombre">Nombre del participante</label>
-        <input type="text" id="nombre" required placeholder="Ingresa tu nombre">
-
-        <!-- Partido 1 -->
-        <div class="partido" data-partido="Toluca vs Monterrey">
-            <div class="nombre-equipo local">Toluca</div>
-            <div class="opciones">
-                <button type="button" class="btn-opcion" data-valor="Toluca">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Club_Deportivo_Toluca_logo.svg" class="logo" alt="Toluca"> Local
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Empate">
-                    Empate
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Monterrey">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Monterrey_logo.png" class="logo" alt="Monterrey"> Visitante
-                </button>
-            </div>
-            <div class="nombre-equipo visitante">Monterrey</div>
+        <div class="form-nombre">
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
         </div>
 
-        <!-- Partido 2 -->
-        <div class="partido" data-partido="América vs Pachuca">
-            <div class="nombre-equipo local">América</div>
-            <div class="opciones">
-                <button type="button" class="btn-opcion" data-valor="América">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Club_Am%C3%A9rica_logo.svg" class="logo" alt="América"> Local
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Empate">
-                    Empate
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Pachuca">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Pachuca_logo.png" class="logo" alt="Pachuca"> Visitante
-                </button>
-            </div>
-            <div class="nombre-equipo visitante">Pachuca</div>
-        </div>
-
-        <!-- Partido 3 -->
-        <div class="partido" data-partido="Barcelona vs Real Madrid">
-            <div class="nombre-equipo local">Barcelona</div>
-            <div class="opciones">
-                <button type="button" class="btn-opcion" data-valor="Barcelona">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/FC_Barcelona_logo.svg" class="logo" alt="Barcelona"> Local
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Empate">
-                    Empate
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Real Madrid">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Real_Madrid_CF_logo.svg" class="logo" alt="Real Madrid"> Visitante
-                </button>
-            </div>
-            <div class="nombre-equipo visitante">Real Madrid</div>
-        </div>
-
-        <!-- Partido 4 -->
-        <div class="partido" data-partido="Liverpool vs Arsenal">
-            <div class="nombre-equipo local">Liverpool</div>
-            <div class="opciones">
-                <button type="button" class="btn-opcion" data-valor="Liverpool">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Liverpool_FC_crest_2012.svg" class="logo" alt="Liverpool"> Local
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Empate">
-                    Empate
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Arsenal">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Arsenal_FC_logo.svg" class="logo" alt="Arsenal"> Visitante
-                </button>
-            </div>
-            <div class="nombre-equipo visitante">Arsenal</div>
-        </div>
-
-        <!-- Partido 5 -->
-        <div class="partido" data-partido="Napoli vs Genoa">
-            <div class="nombre-equipo local">Napoli</div>
-            <div class="opciones">
-                <button type="button" class="btn-opcion" data-valor="Napoli">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/S.S._Napoli_logo.svg" class="logo" alt="Napoli"> Local
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Empate">
-                    Empate
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Genoa">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Genoa_CFC_logo.svg" class="logo" alt="Genoa"> Visitante
-                </button>
-            </div>
-            <div class="nombre-equipo visitante">Genoa</div>
-        </div>
-
-        <!-- Partido 6 -->
-        <div class="partido" data-partido="Juventus vs AC Milan">
-            <div class="nombre-equipo local">Juventus</div>
-            <div class="opciones">
-                <button type="button" class="btn-opcion" data-valor="Juventus">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Juventus_FC_logo_2017.svg" class="logo" alt="Juventus"> Local
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Empate">
-                    Empate
-                </button>
-                <button type="button" class="btn-opcion" data-valor="AC Milan">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/AC_Milan_logo.svg" class="logo" alt="AC Milan"> Visitante
-                </button>
-            </div>
-            <div class="nombre-equipo visitante">AC Milan</div>
-        </div>
-
-        <!-- Partido 7 -->
-        <div class="partido" data-partido="Bayern Munich vs Borussia Dortmund">
-            <div class="nombre-equipo local">Bayern Munich</div>
-            <div class="opciones">
-                <button type="button" class="btn-opcion" data-valor="Bayern Munich">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo.svg" class="logo" alt="Bayern Munich"> Local
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Empate">
-                    Empate
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Borussia Dortmund">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Borussia_Dortmund_logo.svg" class="logo" alt="Borussia Dortmund"> Visitante
-                </button>
-            </div>
-            <div class="nombre-equipo visitante">Borussia Dortmund</div>
-        </div>
-
-        <!-- Partido 8 -->
-        <div class="partido" data-partido="Chelsea vs Tottenham Hotspur">
-            <div class="nombre-equipo local">Chelsea</div>
-            <div class="opciones">
-                <button type="button" class="btn-opcion" data-valor="Chelsea">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Chelsea_FC_logo.svg" class="logo" alt="Chelsea"> Local
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Empate">
-                    Empate
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Tottenham Hotspur">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Tottenham_Hotspur.svg" class="logo" alt="Tottenham"> Visitante
-                </button>
-            </div>
-            <div class="nombre-equipo visitante">Tottenham Hotspur</div>
-        </div>
-
-        <!-- Partido 9 -->
-        <div class="partido" data-partido="Paris Saint-Germain vs Lyon">
-            <div class="nombre-equipo local">Paris Saint-Germain</div>
-            <div class="opciones">
-                <button type="button" class="btn-opcion" data-valor="Paris Saint-Germain">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Paris_Saint-Germain_FC_logo_2013.svg" class="logo" alt="PSG"> Local
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Empate">
-                    Empate
-                </button>
-                <button type="button" class="btn-opcion" data-valor="Lyon">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Olympique_Lyonnais_logo.svg" class="logo" alt="Lyon"> Visitante
-                </button>
-            </div>
-            <div class="nombre-equipo visitante">Lyon</div>
-        </div>
+        <!-- Aquí van los 9 partidos -->
+        <div id="partidos-container"></div>
 
         <button type="submit">Enviar Quiniela</button>
     </form>
 </div>
 
 <script>
+const partidosData = [
+  ["Toluca", "Monterrey", "https://logodownload.org/wp-content/uploads/2022/01/club-deportivo-toluca-logo-0.png", "https://es.logodownload.org/wp-content/uploads/2022/01/monterrey-logo-rayados-monterrey-escudo.png"],
+  ["América", "Pachuca", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Club_Am%C3%A9rica_logo.svg/800px-Club_Am%C3%A9rica_logo.svg.png", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Club_de_F%C3%BAtbol_Pachuca_logo.svg/800px-Club_de_F%C3%BAtbol_Pachuca_logo.svg.png"],
+  ["Barcelona", "Real Madrid", "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/FC_Barcelona_logo.svg/800px-FC_Barcelona_logo.svg.png", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Real_Madrid_CF_logo.svg/800px-Real_Madrid_CF_logo.svg.png"],
+  ["Liverpool", "Arsenal", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Liverpool_FC_crest_2012.svg/800px-Liverpool_FC_crest_2012.svg.png", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Arsenal_FC_logo.svg/800px-Arsenal_FC_logo.svg.png"],
+  ["Napoli", "Genoa", "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/S.S._Napoli_logo.svg/800px-S.S._Napoli_logo.svg.png", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Genoa_CFC_logo.svg/800px-Genoa_CFC_logo.svg.png"],
+  ["Juventus", "Inter", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Juventus_FC_2017_logo.svg/800px-Juventus_FC_2017_logo.svg.png", "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/FC_Internazionale_Milano_2021.svg/800px-FC_Internazionale_Milano_2021.svg.png"],
+  ["PSG", "Marseille", "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Paris_Saint-Germain_F.C..svg/800px-Paris_Saint-Germain_F.C..svg.png", "https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Olympique_Marseille_logo.svg/800px-Olympique_Marseille_logo.svg.png"],
+  ["Bayern", "Dortmund", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg/800px-FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg.png", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/800px-Borussia_Dortmund_logo.svg.png"],
+  ["Chelsea", "Man City", "https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/800px-Chelsea_FC.svg.png", "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/800px-Manchester_City_FC_badge.svg.png"]
+];
+
+const container = document.getElementById("partidos-container");
+partidosData.forEach(([local, visitante, logoLocal, logoVisitante], i) => {
+  const div = document.createElement("div");
+  div.className = "partido";
+  div.setAttribute("data-partido", `${local} vs ${visitante}`);
+  div.innerHTML = `
+    <div class="nombre-equipo local">${local}</div>
+    <div class="opciones">
+      <button type="button" class="btn-opcion" data-valor="${local}">
+        <img src="${logoLocal}" class="logo" alt="${local}"> Local
+      </button>
+      <button type="button" class="btn-opcion" data-valor="Empate">Empate</button>
+      <button type="button" class="btn-opcion" data-valor="${visitante}">
+        <img src="${logoVisitante}" class="logo" alt="${visitante}"> Visitante
+      </button>
+    </div>
+    <div class="nombre-equipo visitante">${visitante}</div>
+  `;
+  container.appendChild(div);
+});
+
+const partidos = document.querySelectorAll(".partido");
+
+document.addEventListener("click", function(e) {
+  if (e.target.closest(".btn-opcion")) {
+    const btn = e.target.closest(".btn-opcion");
+    const opciones = btn.parentElement.querySelectorAll(".btn-opcion");
+    opciones.forEach(o => o.classList.remove("seleccionado"));
+    btn.classList.add("seleccionado");
+  }
+});
+
 document.getElementById("quinielaForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const nombre = document.getElementById("nombre").value.trim();
-    if (!nombre) {
-        alert("Por favor, escribe tu nombre.");
-        return;
+  const nombre = document.getElementById("nombre").value.trim();
+  if (!nombre) {
+    alert("Por favor, escribe tu nombre.");
+    return;
+  }
+
+  let mensaje = `*Mi Quiniela - ${nombre}*:%0A`;
+  let todosSeleccionados = true;
+
+  partidos.forEach((partido, index) => {
+    const seleccion = partido.querySelector(".btn-opcion.seleccionado");
+    if (seleccion) {
+      const valor = seleccion.getAttribute("data-valor");
+      let letra = valor === "Empate" ? "E" : (indexar(valor, partido) ? "L" : "V");
+      mensaje += `${index + 1}. ${letra}%0A`;
+    } else {
+      todosSeleccionados = false;
     }
+  });
 
-    let mensaje = `*Mi Quiniela - ${nombre}*:%0A`;
-    let todosSeleccionados = true;
-    let respuestas = [];
+  if (!todosSeleccionados) {
+    alert("Debes seleccionar una opción en todos los partidos.");
+    return;
+  }
 
-    document.querySelectorAll(".partido").forEach((partido, index) => {
-        const seleccion = partido.querySelector(".btn-opcion.seleccionado");
-        if (seleccion) {
-            const valor = seleccion.getAttribute("data-valor");
-            let letra = valor === "Empate" ? "E" : (indexar(valor, partido) ? "L" : "V");
-            respuestas.push(letra);
-            mensaje += `${index + 1}. ${letra}%0A`;
-        } else {
-            todosSeleccionados = false;
-        }
-    });
-
-    if (!todosSeleccionados) {
-        alert("Debes seleccionar una opción en todos los partidos.");
-        return;
-    }
-
-    const webhookURL = "https://script.google.com/macros/s/AKfycbXXXXXXXXXXX/exec"; // Reemplaza esta URL con la URL de tu Webhook
-
-    fetch(webhookURL, {
-        method: "POST",
-        body: JSON.stringify({
-            nombre: nombre,
-            respuestas: respuestas
-        }),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(() => {
-        const telefono = "524775670219";  // Reemplaza con el número de teléfono correcto
-        const url = `https://wa.me/${telefono}?text=${mensaje}`;
-        window.open(url, "_blank");
-    }).catch(() => {
-        alert("Error al guardar los resultados.");
-    });
+  const telefono = "524775670219";
+  const url = `https://wa.me/${telefono}?text=${mensaje}`;
+  window.open(url, "_blank");
 });
 
 function indexar(valor, partido) {
-    const local = partido.querySelector(".nombre-equipo.local").textContent.trim();
-    return valor === local;
+  const local = partido.querySelector(".nombre-equipo.local").textContent.trim();
+  return valor === local;
 }
 </script>
-
 </body>
 </html>
-
