@@ -8,7 +8,8 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #A5D6A7; /* Fondo verde más tenue */
+      background: linear-gradient(to right, #cdeac0, #b8e1b2); /* Fondo verde leve */
+      background-size: cover;
       color: #333;
     }
 
@@ -18,7 +19,7 @@
       border-radius: 20px;
       max-width: 750px;
       margin: 2rem auto;
-      background-color: white; /* Contrasta con el fondo verde */
+      background-color: #ffffff; /* Color claro que contrasta con el fondo */
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
 
@@ -121,19 +122,29 @@
     }
 
     .logo {
-      width: 30px;
-      height: 30px;
-      margin-right: 5px;
+      width: 20px;
+      height: 20px;
     }
 
+    /* Hacer elementos más pequeños en móviles, pero mantener distribución en línea */
     @media (max-width: 600px) {
-      .partido {
-        grid-template-columns: 1fr;
-        text-align: center;
+      .nombre-equipo {
+        font-size: 0.8rem;
       }
 
-      .opciones {
-        flex-direction: row;
+      .btn-opcion {
+        padding: 0.4rem 0.5rem;
+        min-width: 35px;
+        font-size: 0.85rem;
+      }
+
+      .botones-accion button {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+      }
+
+      .form-nombre input {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -158,32 +169,32 @@
 
 <script>
 const partidosData = [
-  ["Toluca", "Monterrey", "https://upload.wikimedia.org/wikipedia/commons/0/05/Logo_Toluca.png", "https://upload.wikimedia.org/wikipedia/commons/0/01/Monterrey_logo.png"],
-  ["América", "Pachuca", "https://upload.wikimedia.org/wikipedia/commons/2/2b/Club_America_logo.svg", "https://upload.wikimedia.org/wikipedia/commons/9/91/Logo_del_Club_Pachuca.png"],
-  ["Barcelona", "Real Madrid", "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/FC_Barcelona_%28logo%29.svg/600px-FC_Barcelona_%28logo%29.svg.png", "https://upload.wikimedia.org/wikipedia/commons/0/0c/Real_Madrid_CF_logo.svg"],
-  ["Liverpool", "Arsenal", "https://upload.wikimedia.org/wikipedia/commons/0/0c/Liverpool_FC_Logo.svg", "https://upload.wikimedia.org/wikipedia/commons/c/cf/Arsenal_FC.svg"],
-  ["Napoli", "Genoa", "https://upload.wikimedia.org/wikipedia/commons/2/2e/SSC_Napoli_logo.svg", "https://upload.wikimedia.org/wikipedia/commons/0/05/Genoa_CFC_logo.svg"],
-  ["Juventus", "Inter", "https://upload.wikimedia.org/wikipedia/commons/e/e7/Juventus_FC_Logo_2017.svg", "https://upload.wikimedia.org/wikipedia/commons/0/0d/F.C._Internazionale_Milano_logo.svg"],
-  ["PSG", "Marseille", "https://upload.wikimedia.org/wikipedia/commons/d/db/Paris_Saint-Germain_FC_Logo_2021.svg", "https://upload.wikimedia.org/wikipedia/commons/6/67/Olympique_de_Marseille_Logo.svg"],
-  ["Bayern", "Dortmund", "https://upload.wikimedia.org/wikipedia/commons/1/1f/Fc_bayern_m%C3%BCnchen_logo.svg", "https://upload.wikimedia.org/wikipedia/commons/5/53/Borussia_Dortmund_logo.svg"],
-  ["Chelsea", "Man City", "https://upload.wikimedia.org/wikipedia/commons/4/43/Chelsea_FC_logo.svg", "https://upload.wikimedia.org/wikipedia/commons/7/7c/Manchester_City_FC_logo.svg"]
+  ["Toluca", "Monterrey"],
+  ["América", "Pachuca"],
+  ["Barcelona", "Real Madrid"],
+  ["Liverpool", "Arsenal"],
+  ["Napoli", "Genoa"],
+  ["Juventus", "Inter"],
+  ["PSG", "Marseille"],
+  ["Bayern", "Dortmund"],
+  ["Chelsea", "Man City"]
 ];
 
 const container = document.getElementById("partidos-container");
 const resumen = document.getElementById("resumen");
 
-partidosData.forEach(([local, visitante, logoLocal, logoVisitante], index) => {
+partidosData.forEach(([local, visitante], index) => {
   const div = document.createElement("div");
   div.className = "partido";
   div.setAttribute("data-index", index);
   div.innerHTML = `
-    <div class="nombre-equipo"><img src="${logoLocal}" class="logo" alt="">${local}</div>
+    <div class="nombre-equipo">${local}</div>
     <div class="opciones">
       <button type="button" class="btn-opcion" data-valor="L">L</button>
       <button type="button" class="btn-opcion" data-valor="E">E</button>
       <button type="button" class="btn-opcion" data-valor="V">V</button>
     </div>
-    <div class="nombre-equipo"><img src="${logoVisitante}" class="logo" alt="">${visitante}</div>
+    <div class="nombre-equipo">${visitante}</div>
   `;
   container.appendChild(div);
 });
