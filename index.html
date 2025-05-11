@@ -1,89 +1,207 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Quiniela 2025</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiniela</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #f0f2f5, #e1e6ed);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0d6efd;
+            margin-bottom: 1.5rem;
+        }
+
+        .partido {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nombre-equipo {
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 0 0.5rem;
+        }
+
+        .local {
+            text-align: left;
+        }
+
+        .visitante {
+            text-align: right;
+        }
+
+        .opciones {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-opcion {
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn-opcion img.logo {
+            width: 22px;
+            height: 22px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .btn-opcion.seleccionado {
+            background-color: #0d6efd;
+            color: white;
+            border-color: #0d6efd;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease-in-out;
+            margin-top: 1.5rem;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #1e7e34;
+        }
+    </style>
 </head>
 <body>
-  <h2>Quiniela - Cuartos de Final</h2>
-  <form id="quinielaForm">
-    <label>Nombre:<br><input type="text" name="nombre" id="nombre" required></label><br><br>
 
-    <label>Toluca vs Monterrey:
-      <select name="partido1">
-        <option value="Toluca">Toluca</option>
-        <option value="Empate">Empate</option>
-        <option value="Monterrey">Monterrey</option>
-      </select>
-    </label><br>
+<div class="container">
+    <h2>Quiniela</h2>
+    <form id="quinielaForm">
+        
+        <!-- Partido 1 -->
+        <div class="partido" data-partido="Toluca vs Monterrey">
+            <div class="nombre-equipo local">Toluca</div>
+            <div class="opciones">
+                <button type="button" class="btn-opcion" data-valor="Toluca">
+                    <img src="https://logodownload.org/wp-content/uploads/2022/01/club-deportivo-toluca-logo-0.png" class="logo" alt="Toluca"> Local
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Empate">
+                    Empate
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Monterrey">
+                    <img src="https://es.logodownload.org/wp-content/uploads/2022/01/monterrey-logo-rayados-monterrey-escudo.png" class="logo" alt="Monterrey"> Visitante
+                </button>
+            </div>
+            <div class="nombre-equipo visitante">Monterrey</div>
+        </div>
 
-    <label>América vs Pachuca:
-      <select name="partido2">
-        <option value="América">América</option>
-        <option value="Empate">Empate</option>
-        <option value="Pachuca">Pachuca</option>
-      </select>
-    </label><br>
+        <!-- Partido 2 -->
+        <div class="partido" data-partido="América vs Pachuca">
+            <div class="nombre-equipo local">América</div>
+            <div class="opciones">
+                <button type="button" class="btn-opcion" data-valor="América">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Club_Am%C3%A9rica_logo.svg/800px-Club_Am%C3%A9rica_logo.svg.png" class="logo" alt="América"> Local
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Empate">
+                    Empate
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Pachuca">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Club_de_F%C3%BAtbol_Pachuca_logo.svg/800px-Club_de_F%C3%BAtbol_Pachuca_logo.svg.png" class="logo" alt="Pachuca"> Visitante
+                </button>
+            </div>
+            <div class="nombre-equipo visitante">Pachuca</div>
+        </div>
 
-    <label>Barcelona vs Real Madrid:
-      <select name="partido3">
-        <option value="Barcelona">Barcelona</option>
-        <option value="Empate">Empate</option>
-        <option value="Real Madrid">Real Madrid</option>
-      </select>
-    </label><br>
+        <!-- Partido 3 -->
+        <div class="partido" data-partido="Barcelona vs Real Madrid">
+            <div class="nombre-equipo local">Barcelona</div>
+            <div class="opciones">
+                <button type="button" class="btn-opcion" data-valor="Barcelona">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/FC_Barcelona_logo.svg/800px-FC_Barcelona_logo.svg.png" class="logo" alt="Barcelona"> Local
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Empate">
+                    Empate
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Real Madrid">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Real_Madrid_CF_logo.svg/800px-Real_Madrid_CF_logo.svg.png" class="logo" alt="Real Madrid"> Visitante
+                </button>
+            </div>
+            <div class="nombre-equipo visitante">Real Madrid</div>
+        </div>
 
-    <label>Liverpool vs Arsenal:
-      <select name="partido4">
-        <option value="Liverpool">Liverpool</option>
-        <option value="Empate">Empate</option>
-        <option value="Arsenal">Arsenal</option>
-      </select>
-    </label><br>
+        <!-- Partido 4 -->
+        <div class="partido" data-partido="Liverpool vs Arsenal">
+            <div class="nombre-equipo local">Liverpool</div>
+            <div class="opciones">
+                <button type="button" class="btn-opcion" data-valor="Liverpool">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Liverpool_FC_crest_2012.svg/800px-Liverpool_FC_crest_2012.svg.png" class="logo" alt="Liverpool"> Local
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Empate">
+                    Empate
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Arsenal">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Arsenal_FC_logo.svg/800px-Arsenal_FC_logo.svg.png" class="logo" alt="Arsenal"> Visitante
+                </button>
+            </div>
+            <div class="nombre-equipo visitante">Arsenal</div>
+        </div>
 
-    <label>Napoli vs Genoa:
-      <select name="partido5">
-        <option value="Napoli">Napoli</option>
-        <option value="Empate">Empate</option>
-        <option value="Genoa">Genoa</option>
-      </select>
-    </label><br><br>
+        <!-- Partido 5 -->
+        <div class="partido" data-partido="Napoli vs Genoa">
+            <div class="nombre-equipo local">Napoli</div>
+            <div class="opciones">
+                <button type="button" class="btn-opcion" data-valor="Napoli">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/S.S._Napoli_logo.svg/800px-S.S._Napoli_logo.svg.png" class="logo" alt="Napoli"> Local
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Empate">
+                    Empate
+                </button>
+                <button type="button" class="btn-opcion" data-valor="Genoa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Genoa_CFC_logo.svg/800px-Genoa_CFC_logo.svg.png" class="logo" alt="Genoa"> Visitante
+                </button>
+            </div>
+            <div class="nombre-equipo visitante">Genoa</div>
+        </div>
 
-    <a id="whatsAppLink" href="#" target="_blank">
-      <button type="submit">Enviar por WhatsApp</button>
-    </a>
-  </form>
+        <button type="submit">Enviar Quiniela</button>
+    </form>
+</div>
 
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzlFp7YnlK9jDd5N-u6HdqY1Z3ksPepLhv6tJICzPjJ7G20kJVBRlm0_21ppsRh3RiNqQ/exec';
-
-    document.getElementById('quinielaForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const nombre = document.getElementById('nombre').value;
-      const form = new FormData(this);
-
-      const mensaje = `*Quiniela de ${nombre}*\n` +
-        `1. Toluca vs Monterrey: ${form.get('partido1')}\n` +
-        `2. América vs Pachuca: ${form.get('partido2')}\n` +
-        `3. Barcelona vs Real Madrid: ${form.get('partido3')}\n` +
-        `4. Liverpool vs Arsenal: ${form.get('partido4')}\n` +
-        `5. Napoli vs Genoa: ${form.get('partido5')}`;
-
-      // Enviar por WhatsApp
-      const telefono = '524775670219';
-      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-      document.getElementById('whatsAppLink').href = url;
-      document.getElementById('whatsAppLink').click();
-
-      // Guardar en Google Sheets
-      fetch(scriptURL, {
-        method: 'POST',
-        body: form
-      })
-      .then(response => console.log('Enviado a Google Sheets'))
-      .catch(error => console.error('Error al enviar a Google Sheets', error));
-    });
-  </script>
 </body>
 </html>
