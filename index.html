@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #cdeac0, #b8e1b2); /* Fondo verde leve */
+      background: linear-gradient(to right, #cdeac0, #b8e1b2);
       background-size: cover;
       color: #333;
     }
@@ -19,7 +19,7 @@
       border-radius: 20px;
       max-width: 750px;
       margin: 2rem auto;
-      background-color: #ffffff; /* Color claro que contrasta con el fondo */
+      background-color: #ffffff;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
 
@@ -45,11 +45,24 @@
       display: grid;
       grid-template-columns: 1fr 2fr 1fr;
       align-items: center;
-      background: #f8fdf8;
+      background: #f4f4f4;
       padding: 0.8rem;
       margin-bottom: 0.8rem;
       border-radius: 12px;
-      border: 1px solid #c8e6c9;
+      border: 1px solid #d0d0d0;
+    }
+
+    .equipo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .logo-equipo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
     }
 
     .nombre-equipo {
@@ -67,17 +80,19 @@
     .btn-opcion {
       padding: 0.5rem 0.6rem;
       border-radius: 10px;
-      border: 2px solid #28a745;
-      background-color: white;
+      border: 2px solid #bbb;
+      background-color: #fdfdfd;
       cursor: pointer;
       font-weight: bold;
       min-width: 45px;
-      transition: background 0.2s;
+      transition: background 0.2s, border-color 0.2s;
+      color: #333;
     }
 
     .btn-opcion.seleccionado {
-      background-color: #28a745;
+      background-color: #5c9ded;
       color: white;
+      border-color: #5c9ded;
     }
 
     .resumen {
@@ -126,7 +141,6 @@
       height: 20px;
     }
 
-    /* Hacer elementos más pequeños en móviles, pero mantener distribución en línea */
     @media (max-width: 600px) {
       .nombre-equipo {
         font-size: 0.8rem;
@@ -145,6 +159,11 @@
 
       .form-nombre input {
         font-size: 0.9rem;
+      }
+
+      .logo-equipo {
+        width: 24px;
+        height: 24px;
       }
     }
   </style>
@@ -180,6 +199,27 @@ const partidosData = [
   ["Chelsea", "Man City"]
 ];
 
+const logos = {
+  "Toluca": "https://upload.wikimedia.org/wikipedia/en/2/28/Deportivo_Toluca_FC_logo.svg",
+  "Monterrey": "https://upload.wikimedia.org/wikipedia/en/1/15/C.F._Monterrey_crest.svg",
+  "América": "https://upload.wikimedia.org/wikipedia/en/3/3f/Club_America_logo.svg",
+  "Pachuca": "https://upload.wikimedia.org/wikipedia/en/f/fd/C.F._Pachuca_logo.svg",
+  "Barcelona": "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
+  "Real Madrid": "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg",
+  "Liverpool": "https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg",
+  "Arsenal": "https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg",
+  "Napoli": "https://upload.wikimedia.org/wikipedia/en/2/2d/S.S.C._Napoli_badge.svg",
+  "Genoa": "https://upload.wikimedia.org/wikipedia/en/0/05/Genoa_CFC_logo.svg",
+  "Juventus": "https://upload.wikimedia.org/wikipedia/commons/1/15/Juventus_FC_2017_logo.svg",
+  "Inter": "https://upload.wikimedia.org/wikipedia/en/0/0b/Inter_Milan.svg",
+  "PSG": "https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg",
+  "Marseille": "https://upload.wikimedia.org/wikipedia/en/6/6e/Olympique_Marseille_logo.svg",
+  "Bayern": "https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_München_logo_%282017%29.svg",
+  "Dortmund": "https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg",
+  "Chelsea": "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
+  "Man City": "https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg"
+};
+
 const container = document.getElementById("partidos-container");
 const resumen = document.getElementById("resumen");
 
@@ -188,13 +228,19 @@ partidosData.forEach(([local, visitante], index) => {
   div.className = "partido";
   div.setAttribute("data-index", index);
   div.innerHTML = `
-    <div class="nombre-equipo">${local}</div>
+    <div class="equipo">
+      <img class="logo-equipo" src="${logos[local] || ''}" alt="${local}" />
+      <div class="nombre-equipo">${local}</div>
+    </div>
     <div class="opciones">
       <button type="button" class="btn-opcion" data-valor="L">L</button>
       <button type="button" class="btn-opcion" data-valor="E">E</button>
       <button type="button" class="btn-opcion" data-valor="V">V</button>
     </div>
-    <div class="nombre-equipo">${visitante}</div>
+    <div class="equipo">
+      <img class="logo-equipo" src="${logos[visitante] || ''}" alt="${visitante}" />
+      <div class="nombre-equipo">${visitante}</div>
+    </div>
   `;
   container.appendChild(div);
 });
