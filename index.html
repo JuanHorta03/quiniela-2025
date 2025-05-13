@@ -60,9 +60,13 @@
     }
 
     .logo-equipo {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       object-fit: contain;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 4px;
+      border-radius: 8px;
     }
 
     .nombre-equipo {
@@ -141,6 +145,15 @@
       height: 20px;
     }
 
+    .leyenda {
+      font-size: 0.9rem;
+      color: #666;
+      text-align: center;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
     @media (max-width: 600px) {
       .nombre-equipo {
         font-size: 0.8rem;
@@ -162,8 +175,8 @@
       }
 
       .logo-equipo {
-        width: 24px;
-        height: 24px;
+        width: 32px;
+        height: 32px;
       }
     }
   </style>
@@ -188,36 +201,39 @@
 
 <script>
 const partidosData = [
-  ["Toluca", "Monterrey"],
-  ["América", "Pachuca"],
-  ["Barcelona", "Real Madrid"],
-  ["Liverpool", "Arsenal"],
-  ["Napoli", "Genoa"],
-  ["Juventus", "Inter"],
-  ["PSG", "Marseille"],
-  ["Bayern", "Dortmund"],
-  ["Chelsea", "Man City"]
+  ["Toluca", "Tigres"],
+  ["América", "Cruz Azul"],
+  ["Jaiba Brava", "Leones Negros"],
+  ["RB Leipzig", "Stuttgart"],
+  ["Crystal Palace", "Man City"],
+  ["Braga", "Benfica"],
+  ["Inter de Milán", "Lazio"],
+  ["Roma", "Milan"],
+  ["Atlético de Madrid", "Betis"],
+  ["Inter de Miami", "Orlando City"] // Partido de reserva
 ];
 
 const logos = {
-  "Toluca": "https://upload.wikimedia.org/wikipedia/en/2/28/Deportivo_Toluca_FC_logo.svg",
-  "Monterrey": "https://upload.wikimedia.org/wikipedia/en/1/15/C.F._Monterrey_crest.svg",
-  "América": "https://upload.wikimedia.org/wikipedia/en/3/3f/Club_America_logo.svg",
-  "Pachuca": "https://upload.wikimedia.org/wikipedia/en/f/fd/C.F._Pachuca_logo.svg",
-  "Barcelona": "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
-  "Real Madrid": "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg",
-  "Liverpool": "https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg",
-  "Arsenal": "https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg",
-  "Napoli": "https://upload.wikimedia.org/wikipedia/en/2/2d/S.S.C._Napoli_badge.svg",
-  "Genoa": "https://upload.wikimedia.org/wikipedia/en/0/05/Genoa_CFC_logo.svg",
-  "Juventus": "https://upload.wikimedia.org/wikipedia/commons/1/15/Juventus_FC_2017_logo.svg",
-  "Inter": "https://upload.wikimedia.org/wikipedia/en/0/0b/Inter_Milan.svg",
-  "PSG": "https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg",
-  "Marseille": "https://upload.wikimedia.org/wikipedia/en/6/6e/Olympique_Marseille_logo.svg",
-  "Bayern": "https://upload.wikimedia.org/wikipedia/en/1/1f/FC_Bayern_München_logo_%282017%29.svg",
-  "Dortmund": "https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg",
-  "Chelsea": "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
-  "Man City": "https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg"
+  "Toluca": "logos/toluca.png",
+  "Tigres": "logos/tigres.png",
+  "América": "logos/america.png",
+  "Cruz Azul": "logos/cruz-azul.png",
+  "Jaiba Brava": "logos/jaiba-brava.png",
+  "Leones Negros": "logos/leones-negros.png",
+  "RB Leipzig": "logos/rb-leipzig.png",
+  "Stuttgart": "logos/stuttgart.png",
+  "Crystal Palace": "logos/crystal-palace.png",
+  "Man City": "logos/man-city.png",
+  "Braga": "logos/braga.png",
+  "Benfica": "logos/benfica.png",
+  "Inter de Milán": "logos/inter-milan.png",
+  "Lazio": "logos/lazio.png",
+  "Roma": "logos/roma.png",
+  "Milan": "logos/milan.png",
+  "Atlético de Madrid": "logos/atletico-madrid.png",
+  "Betis": "logos/betis.png",
+  "Inter de Miami": "logos/inter-miami.png",
+  "Orlando City": "logos/orlando-city.png"
 };
 
 const container = document.getElementById("partidos-container");
@@ -227,7 +243,7 @@ partidosData.forEach(([local, visitante], index) => {
   const div = document.createElement("div");
   div.className = "partido";
   div.setAttribute("data-index", index);
-  div.innerHTML = `
+  div.innerHTML = ` 
     <div class="equipo">
       <img class="logo-equipo" src="${logos[local] || ''}" alt="${local}" />
       <div class="nombre-equipo">${local}</div>
@@ -243,6 +259,14 @@ partidosData.forEach(([local, visitante], index) => {
     </div>
   `;
   container.appendChild(div);
+
+  // Inserta la leyenda entre el partido 9 y 10
+  if (index === 8) {
+    const leyendaDiv = document.createElement("div");
+    leyendaDiv.className = "leyenda";
+    leyendaDiv.textContent = "⚠️ Este partido solo se utilizará si alguno de los anteriores no se juega.";
+    container.appendChild(leyendaDiv);
+  }
 });
 
 function actualizarResumen() {
